@@ -20,14 +20,20 @@ const db = mysql.createConnection({
   port: 3306,
 });
 
-app.get("/", (req, res) => {
+// CRUD OPERATION
+app.get("/clients", (req, res) => {
   const qry = "select * from clients";
   db.query(qry, (err, result) => {
-    console.log(result);
-    res.send({
-      message: "Clienti",
-      data: result,
-    });
+    if (result.length > 0) {
+      res.send({
+        message: "Clienti trovati",
+        data: result,
+      });
+    } else {
+      res.send({
+        message: "Clienti non trovati",
+      });
+    }
   });
 });
 
