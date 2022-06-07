@@ -16,8 +16,19 @@ const db = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "rootroot",
-  database: "crm",
+  database: "prodigy_crm",
   port: 3306,
+});
+
+app.get("/", (req, res) => {
+  const qry = "select * from clients";
+  db.query(qry, (err, result) => {
+    console.log(result);
+    res.send({
+      message: "Clienti",
+      data: result,
+    });
+  });
 });
 
 // server port
