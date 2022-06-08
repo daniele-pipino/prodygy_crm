@@ -44,7 +44,6 @@
     <div class="list-group w-auto">
       <a
         *ngFor="let ann of annotations"
-        href="#"
         class="list-group-item list-group-item-action d-flex gap-3 py-3"
         aria-current="true"
       >
@@ -55,7 +54,9 @@
               {{ ann.description }}
             </p>
           </div>
-          <small class="opacity-50 text-nowrap">now</small>
+          <button class="btn btn-danger" (click)="deleteAnnotation(ann.id)">
+            Delete
+          </button>
         </div>
       </a>
     </div>

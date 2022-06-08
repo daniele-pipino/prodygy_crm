@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Client } from 'src/model/client.modul';
+import { AnnotationsService } from '../annotations.service';
 import { ClientsService } from '../clients.service';
 
 @Component({
@@ -17,11 +18,11 @@ export class ClientScheduleComponent implements OnInit {
 
   constructor(
     private router: ActivatedRoute,
-    private clientsService: ClientsService
+    private clientsService: ClientsService,
+    private annotationsSevice: AnnotationsService
   ) {}
 
   private initForm() {
-    console.log(this.client);
     this.modifyClientForm = new FormGroup({
       name: new FormControl(),
       surname: new FormControl(),
@@ -40,6 +41,10 @@ export class ClientScheduleComponent implements OnInit {
         this.client = res.client;
         this.annotations = res.annotations;
       });
+  }
+
+  deleteAnnotation(id: number) {
+    this.annotationsSevice.deleteAnnotation(id);
   }
 
   ngOnInit(): void {

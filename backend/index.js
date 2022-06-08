@@ -126,3 +126,15 @@ app.post("/create/client/:id/annotation", (req, res) => {
 app.listen(3000, () => {
   console.log("Server is running...");
 });
+
+app.delete("/annotation/:id/delete", (req, res) => {
+  const id = req.params.id;
+
+  const qry = `delete from annotations where id =${id}`;
+
+  db.query(qry, (err, res) => {
+    if (err) {
+      console.log(err);
+    } else console.log("Annotazione eliminata");
+  });
+});

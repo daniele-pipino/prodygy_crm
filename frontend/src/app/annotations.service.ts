@@ -19,4 +19,9 @@ export class AnnotationsService {
       })
       .subscribe();
   }
+
+  deleteAnnotation(id: number) {
+    console.log(id);
+    this._http.delete(`${this.url}/annotation/${id}/delete`).subscribe();
+  }
 }
