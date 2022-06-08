@@ -29,5 +29,6 @@ export class CreateclientComponent implements OnInit {
   createNewClient() {
     let newClient = this.newClientForm.value;
     this.clientsService.createNewClient(newClient);
+    window.location.reload();
   }
 }

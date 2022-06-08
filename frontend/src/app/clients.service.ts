@@ -12,9 +12,12 @@ export class ClientsService {
   url: string = 'http://localhost:3000';
 
   // methods
-
   getClients() {
     return this._http.get(`${this.url}/clients`);
+  }
+
+  getAllClientData(id: number) {
+    return this._http.get(`${this.url}/client/${id}/data`);
   }
 
   createNewClient(obj: Client) {
@@ -26,5 +29,10 @@ export class ClientsService {
         headers: headers,
       })
       .subscribe();
+  }
+
+  // delete
+  deleteClient(id: number) {
+    this._http.delete(`${this.url}/delete/client/${id}`).subscribe();
   }
 }

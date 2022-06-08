@@ -11,12 +11,35 @@
   <hr />
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
-      <a routerLink="/" class="nav-link text-white active" aria-current="page">
+      <a
+        routerLink="/"
+        class="nav-link text-white"
+        [ngClass]="{ active: this.currentRoute == '/' }"
+        aria-current="page"
+        (click)="checkRoute()"
+      >
         Home
       </a>
     </li>
     <li>
-      <a routerLink="/clients" class="nav-link text-white"> Clients </a>
+      <a
+        routerLink="/clients"
+        class="nav-link text-white"
+        [ngClass]="{ active: this.currentRoute.includes('/client') }"
+        (click)="checkRoute()"
+      >
+        Clients
+      </a>
+    </li>
+    <li>
+      <a
+        routerLink="/offers"
+        class="nav-link text-white"
+        [ngClass]="{ active: this.currentRoute.includes('/offer') }"
+        (click)="checkRoute()"
+      >
+        Offers
+      </a>
     </li>
   </ul>
 </div>

@@ -1,4 +1,4 @@
-<div class="col-4">
+<div class="col-12">
   <div class="card">
     <div class="card-body">
       <h4 class="card-title">{{ client.business_name }}</h4>
@@ -6,8 +6,16 @@
         P.iva:
         <span class="text-decoration-underline"> {{ client.p_iva }} </span>
       </h6>
+      <div>
+        <span class="text-muted">Email: {{ client.email }} </span>
+      </div>
       <p class="card-text"></p>
-      <a href="#" class="btn btn-primary">Open schedule</a>
+      <a [routerLink]="['/clientSchedule', client.id]" class="btn btn-primary"
+        >See more
+      </a>
+      <button (click)="deleteClient(client.id)" class="btn btn-danger mx-1">
+        Delete client
+      </button>
     </div>
   </div>
 </div>

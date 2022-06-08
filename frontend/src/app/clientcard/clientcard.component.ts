@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Client } from 'src/model/client.modul';
+import { ClientsService } from '../clients.service';
 
 @Component({
   selector: 'app-clientcard',
@@ -9,9 +11,13 @@ import { Client } from 'src/model/client.modul';
 export class ClientcardComponent implements OnInit {
   @Input()
   client!: Client;
-  constructor() {}
+  constructor(private clientService: ClientsService) {}
 
-  ngOnInit(): void {
-    console.log(this.client);
+  //delete clients
+  deleteClient(id: number) {
+    this.clientService.deleteClient(id);
+    window.location.reload();
   }
+
+  ngOnInit(): void {}
 }

@@ -1,0 +1,157 @@
+<div class="d-flex">
+  <!-- client info -->
+  <div class="col-4">
+    <div class="p-5 mb-4 bg-light rounded-3" *ngIf="client">
+      <app-create-annotations [clientID]="client.id"></app-create-annotations>
+      <div class="container-fluid py-5">
+        <h1>Info</h1>
+        <h2 class="fw-bold">Client: {{ client.business_name }}</h2>
+        <h3 class="text-muted">
+          Owner: {{ client.name }} {{ client.surname }}
+        </h3>
+        <h4 class="text-muted">
+          P.iva:
+          <span class="text-decoration-underline">{{ client.p_iva }}</span>
+        </h4>
+        <h4>Email: {{ client.email }}</h4>
+        <button
+          class="btn btn-warning"
+          type="button"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          Modify
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- annotations -->
+  <div class="col-8 bg-dark text-white p-5">
+    <div class="d-flex justify-content-between align-items-center">
+      <h1>Annotations</h1>
+      <div>
+        <button
+          type="button"
+          data-bs-toggle="modal"
+          data-bs-target="#noteCreationModal"
+          class="btn btn-success"
+        >
+          +
+        </button>
+      </div>
+    </div>
+    <div class="list-group w-auto">
+      <a
+        *ngFor="let ann of annotations"
+        href="#"
+        class="list-group-item list-group-item-action d-flex gap-3 py-3"
+        aria-current="true"
+      >
+        <div class="d-flex gap-2 w-100 justify-content-between">
+          <div>
+            <h4 class="mb-0">{{ ann.title }}</h4>
+            <p class="mb-0 opacity-75">
+              {{ ann.description }}
+            </p>
+          </div>
+          <small class="opacity-50 text-nowrap">now</small>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Mofify</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="modifyClientForm">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              aria-describedby="name"
+              formControlName="name"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="surname" class="form-label">Surname</label>
+            <input
+              type="text"
+              class="form-control"
+              id="surname"
+              aria-describedby="surname"
+              formControlName="surname"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="company_name" class="form-label">Company Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="company_name"
+              formControlName="company_name"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              aria-describedby="emailHelp"
+              formControlName="email"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">P.iva</label>
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInputPassword1"
+              formControlName="p_iva"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="phone_number" class="form-label">Phone number</label>
+            <input
+              type="text"
+              class="form-control"
+              id="phone_number"
+              formControlName="phone"
+            />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-success">Create</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

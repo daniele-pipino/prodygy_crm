@@ -1,0 +1,47 @@
+<div
+  class="modal fade"
+  id="noteCreationModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Annotations</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="newAnnotationsForm">
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              aria-describedby="title"
+              formControlName="title"
+            />
+          </div>
+          <div class="form-floating">
+            <textarea
+              class="form-control"
+              placeholder="Leave a comment here"
+              id="description"
+              formControlName="description"
+            ></textarea>
+            <label for="description">Description</label>
+          </div>
+          <button class="btn btn-primary my-2" (click)="createAnnotations()">
+            Create
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
