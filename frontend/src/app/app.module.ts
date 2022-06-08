@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,6 +9,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { ClientlistComponent } from './clientlist/clientlist.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ClientcardComponent } from './clientcard/clientcard.component';
+import { CreateclientComponent } from './createclient/createclient.component';
 
 @NgModule({
   declarations: [
@@ -16,8 +18,15 @@ import { ClientcardComponent } from './clientcard/clientcard.component';
     SidebarComponent,
     ClientlistComponent,
     ClientcardComponent,
+    CreateclientComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

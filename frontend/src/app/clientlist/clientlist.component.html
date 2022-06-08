@@ -2,16 +2,32 @@
   <div class="container-fluid py-5">
     <div class="d-flex justify-content-between">
       <div>
-        <h1 class="display-5 fw-bold">Your clients</h1>
+        <h2 class="display-5 fw-bold">Your clients</h2>
       </div>
-      <div>
-        <!-- new client button -->
+      <div class="d-flex align-items-center">
+        <h4>Add client</h4>
+        <div class="mx-1">
+          <!-- Button trigger modal -->
+
+          <button
+            type="button"
+            class="btn btn-success"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            +
+          </button>
+        </div>
       </div>
     </div>
     <hr />
   </div>
 </div>
 
+<!-- creation modal  -->
+<app-createclient></app-createclient>
+
+<!-- clients -->
 <div class="container">
   <div class="row g-3">
     <app-clientcard
