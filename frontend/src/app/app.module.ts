@@ -16,6 +16,8 @@ import { ClientScheduleComponent } from './client-schedule/client-schedule.compo
 import { CreateAnnotationsComponent } from './create-annotations/create-annotations.component';
 import { CreateOffersComponent } from './create-offers/create-offers.component';
 import { ModifyOfferComponent } from './modify-offer/modify-offer.component';
+import { CreateEstimatesComponent } from './create-estimates/create-estimates.component';
+import { ModifyEestimatesComponent } from './modify-eestimates/modify-eestimates.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { ModifyOfferComponent } from './modify-offer/modify-offer.component';
     CreateAnnotationsComponent,
     CreateOffersComponent,
     ModifyOfferComponent,
+    CreateEstimatesComponent,
+    ModifyEestimatesComponent,
   ],
   imports: [
     BrowserModule,

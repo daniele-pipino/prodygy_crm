@@ -15,6 +15,7 @@ export class ClientScheduleComponent implements OnInit {
   clientID: any;
   client!: Client;
   annotations: Array<any> = [];
+  estimates: Array<any> = [];
   offers: Array<any> = [];
 
   constructor(
@@ -41,6 +42,7 @@ export class ClientScheduleComponent implements OnInit {
         this.client = res.client;
         this.annotations = res.annotations;
         this.offers = res.offers;
+        this.estimates = res.estimates;
         this.modifyClientForm.patchValue(this.client);
       });
   }

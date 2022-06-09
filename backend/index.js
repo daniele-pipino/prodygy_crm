@@ -46,6 +46,7 @@ app.get("/client/:id/data", (req, res) => {
     "SELECT * FROM prodigy_crm.clients where id =" + id,
     "SELECT * FROM prodigy_crm.annotations where clients_id =" + id,
     "SELECT * FROM prodigy_crm.offers where clients_id =" + id,
+    "SELECT * FROM prodigy_crm.estimates where clients_id =" + id,
   ];
   db.query(queries.join(";"), (err, result) => {
     if (err) {
@@ -55,6 +56,7 @@ app.get("/client/:id/data", (req, res) => {
         client: result[0][0],
         annotations: result[1],
         offers: result[2],
+        estimates: result[3],
       });
     }
   });
@@ -168,6 +170,7 @@ app.delete("/delete/offer/:id", (req, res) => {
     }
   });
 });
+
 // annotations
 app.post("/create/client/:id/annotation", (req, res) => {
   const clientID = req.params.id;
@@ -179,6 +182,23 @@ app.post("/create/client/:id/annotation", (req, res) => {
       console.log(err);
     } else {
       console.log("annotation created");
+    }
+  });
+});
+
+//estimates
+
+app.post("/create/client/:id/estimate", (req, res) => {
+  const id = req.params.id;
+  const data = req.body;
+
+  const qry = `insert into estimates (name,description,price,clients_id) values ('${data.name}', '${data.description}', '${data.price}', ${id});`;
+
+  db.query(qry, (err, res) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Preventivo creato con successo");
     }
   });
 });
