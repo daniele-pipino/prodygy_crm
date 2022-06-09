@@ -4,10 +4,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mysql = require("mysql2");
-const sgmail = require("@sendgrid/mail");
-const key =
-  "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";
-sgmail.setApiKey(key);
 
 // server istances
 const app = express();
@@ -88,7 +84,7 @@ app.put("/modify/client/:id", (req, res) => {
   const data = req.body;
   console.log(data);
 
-  const qry = `UPDATE clients SET name = '${data.name}', surname = '${data.surname}', business_name = '${data.business_name}', p_iva = '${data.p_iva}', email = '${data.p_iva}', phone = '${data.phone}' WHERE (id = ${clientId});`;
+  const qry = `UPDATE clients SET name = '${data.name}', surname = '${data.surname}', business_name = '${data.business_name}', p_iva = '${data.p_iva}', email = '${data.email}', phone = '${data.phone}' WHERE (id = ${clientId});`;
 
   db.query(qry, (err, res) => {
     if (err) {
@@ -247,6 +243,35 @@ app.delete("/delete/estimate/:id", (req, res) => {
       console.log("Preventivo eliminato");
     }
   });
+});
+
+//email
+
+app.post("/send/email", (req, res) => {
+  const data = req.body;
+
+  const sgMail = require("@sendgrid/mail");
+  const key =
+    "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";
+  sgMail.setApiKey(key);
+
+  const msg = {
+    to: `${data.to}`, // Change to your recipient
+    from: `${data.sender}`, // Change to your verified sender
+    subject: "Sending with SendGrid is Fun",
+    text: `${data.message}`,
+    html: "<strong>and easy to do anywhere, even with Node.js</strong>",
+  };
+  console.log(msg);
+
+  sgMail
+    .send(msg)
+    .then(() => {
+      console.log("Email sent");
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 });
 // server port
 app.listen(3000, () => {

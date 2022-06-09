@@ -33,7 +33,14 @@
         >
           Modify
         </button>
-        <button class="btn btn-secondary">Send an email</button>
+        <button
+          class="btn btn-secondary"
+          data-bs-toggle="modal"
+          data-bs-target="#emailModal"
+        >
+          Send an email
+        </button>
+        <app-send-emal [mail]="client.email"></app-send-emal>
       </div>
     </div>
   </div>

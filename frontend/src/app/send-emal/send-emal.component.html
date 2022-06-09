@@ -1,1 +1,82 @@
-<p>send-emal works!</p>
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="emailModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Email</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="newEmailForm">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"
+              >Your Email</label
+            >
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              formControlName="sender"
+            />
+          </div>
+          <div class="mb-3 d-flex">
+            <div class="col-6 mx-1">
+              <input type="hidden" formControlName="to" />
+              <label for="exampleInputPassword1" class="form-label"
+                >Firstname</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="exampleInputPassword1"
+                formControlName="firstname"
+              />
+            </div>
+            <div class="col-6">
+              <label for="exampleInputPassword1" class="form-label"
+                >Lastname</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="exampleInputPassword1"
+                formControlName="lastname"
+              />
+            </div>
+          </div>
+          <div class="form-floating">
+            <textarea
+              class="form-control"
+              placeholder="Insert your message here"
+              id="floatingTextarea"
+              formControlName="message"
+            ></textarea>
+            <label for="floatingTextarea">Message</label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+          (click)="sendEmail()"
+        >
+          Send Email
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
