@@ -1,10 +1,15 @@
 // import all the libraries
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mysql = require("mysql2");
+const sgmail = require("@sendgrid/mail");
+const key =
+  "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";
+sgmail.setApiKey(key);
 
-// server istance
+// server istances
 const app = express();
 
 // libarries use

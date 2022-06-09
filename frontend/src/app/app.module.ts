@@ -19,6 +19,7 @@ import { ModifyOfferComponent } from './modify-offer/modify-offer.component';
 import { CreateEstimatesComponent } from './create-estimates/create-estimates.component';
 
 import { ModifyEstimateComponent } from './modify-estimate/modify-estimate.component';
+import { SendEmalComponent } from './send-emal/send-emal.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ModifyEstimateComponent } from './modify-estimate/modify-estimate.compo
     ModifyOfferComponent,
     CreateEstimatesComponent,
     ModifyEstimateComponent,
+    SendEmalComponent,
   ],
   imports: [
     BrowserModule,
