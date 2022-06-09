@@ -141,6 +141,21 @@ app.post("/create/client/:id/offer", (req, res) => {
   });
 });
 
+app.put("/modify/offer/:id", (req, res) => {
+  const offerId = req.params.id;
+  const data = req.body;
+
+  const qry = `update offers set name = '${data.name}',description = '${data.description}',price = '${data.price}' where id = ${offerId};`;
+
+  db.query(qry, (err, res) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("offerta modificata");
+    }
+  });
+});
+
 app.delete("/delete/offer/:id", (req, res) => {
   const offerId = req.params.id;
   const qry = `delete from offers where id = ${offerId};`;

@@ -15,6 +15,7 @@ import { OfferscardComponent } from './offerscard/offerscard.component';
 import { ClientScheduleComponent } from './client-schedule/client-schedule.component';
 import { CreateAnnotationsComponent } from './create-annotations/create-annotations.component';
 import { CreateOffersComponent } from './create-offers/create-offers.component';
+import { ModifyOfferComponent } from './modify-offer/modify-offer.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { CreateOffersComponent } from './create-offers/create-offers.component';
     ClientScheduleComponent,
     CreateAnnotationsComponent,
     CreateOffersComponent,
+    ModifyOfferComponent,
   ],
   imports: [
     BrowserModule,

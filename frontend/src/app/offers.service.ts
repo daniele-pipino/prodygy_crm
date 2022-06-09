@@ -23,6 +23,17 @@ export class OffersService {
       .subscribe();
   }
 
+  modifyOffer(obj: object, id: number) {
+    const headers = { 'content-type': 'application/json' };
+    const body = JSON.stringify(obj);
+    console.log(body);
+    this._http
+      .put(`${this.url}/modify/offer/${id}`, body, {
+        headers: headers,
+      })
+      .subscribe();
+  }
+
   deleteOffer(id: number) {
     this._http.delete(`${this.url}/delete/offer/${id}`).subscribe();
   }
