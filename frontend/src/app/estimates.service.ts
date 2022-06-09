@@ -18,4 +18,8 @@ export class EstimatesService {
       })
       .subscribe();
   }
+
+  delete(id: number) {
+    this._http.delete(`${this.url}/delete/estimate/${id}`).subscribe();
+  }
 }

@@ -186,6 +186,18 @@ app.post("/create/client/:id/annotation", (req, res) => {
   });
 });
 
+app.delete("/annotation/:id/delete", (req, res) => {
+  const id = req.params.id;
+
+  const qry = `delete from annotations where id =${id}`;
+
+  db.query(qry, (err, res) => {
+    if (err) {
+      console.log(err);
+    } else console.log("Annotazione eliminata");
+  });
+});
+
 //estimates
 
 app.post("/create/client/:id/estimate", (req, res) => {
@@ -202,19 +214,20 @@ app.post("/create/client/:id/estimate", (req, res) => {
     }
   });
 });
+
+app.delete("/delete/estimate/:id", (req, res) => {
+  const estimateId = req.params.id;
+  const qry = `delete from estimates where id = ${estimateId}`;
+
+  db.query(qry, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Preventivo eliminato");
+    }
+  });
+});
 // server port
 app.listen(3000, () => {
   console.log("Server is running...");
-});
-
-app.delete("/annotation/:id/delete", (req, res) => {
-  const id = req.params.id;
-
-  const qry = `delete from annotations where id =${id}`;
-
-  db.query(qry, (err, res) => {
-    if (err) {
-      console.log(err);
-    } else console.log("Annotazione eliminata");
-  });
 });

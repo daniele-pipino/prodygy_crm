@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Client } from 'src/model/client.modul';
 import { AnnotationsService } from '../annotations.service';
 import { ClientsService } from '../clients.service';
+import { EstimatesService } from '../estimates.service';
 import { OffersService } from '../offers.service';
 
 @Component({
@@ -22,7 +23,8 @@ export class ClientScheduleComponent implements OnInit {
     private router: ActivatedRoute,
     private clientsService: ClientsService,
     private annotationsSevice: AnnotationsService,
-    private offersService: OffersService
+    private offersService: OffersService,
+    private estimateService: EstimatesService
   ) {}
 
   modifyClientForm = new FormGroup({
@@ -62,6 +64,13 @@ export class ClientScheduleComponent implements OnInit {
   deleteOffer(id: number) {
     if (confirm('Sei sicuro di voler elimanre questa offerta?')) {
       this.offersService.deleteOffer(id);
+      this.getData();
+    }
+  }
+
+  deleteEstimates(id: number) {
+    if (confirm('Sei sicuro di voler eliminare questo preventivo?')) {
+      this.estimateService.delete(id);
       this.getData();
     }
   }
