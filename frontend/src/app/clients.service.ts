@@ -31,6 +31,17 @@ export class ClientsService {
       .subscribe();
   }
 
+  modifyClient(obj: object, id: number) {
+    const headers = { 'content-type': 'application/json' };
+    const body = JSON.stringify(obj);
+    console.log(body);
+    this._http
+      .put(`${this.url}/modify/client/${id}`, body, {
+        headers: headers,
+      })
+      .subscribe();
+  }
+
   // delete
   deleteClient(id: number) {
     this._http.delete(`${this.url}/delete/client/${id}`).subscribe();

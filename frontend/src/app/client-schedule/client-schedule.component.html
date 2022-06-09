@@ -1,11 +1,15 @@
 <div class="d-flex">
   <!-- client info -->
-  <div class="col-4">
-    <div class="p-5 mb-4 bg-light rounded-3" *ngIf="client">
+  <div class="col-6">
+    <div class="p-5 bg-light rounded-3" *ngIf="client">
       <app-create-annotations
         [clientID]="client.id"
         (update)="update($event)"
       ></app-create-annotations>
+      <app-create-offers
+        [clientID]="client.id"
+        (update)="update($event)"
+      ></app-create-offers>
       <div class="container-fluid py-5">
         <h1>Info</h1>
         <h2 class="fw-bold">Client: {{ client.business_name }}</h2>
@@ -30,12 +34,11 @@
   </div>
 
   <!-- annotations -->
-  <div class="col-8 bg-dark text-white p-5">
-    <div class="d-flex justify-content-between align-items-center">
+  <div class="col-6 bg-dark text-white p-4">
+    <div class="d-flex justify-content-between align-items-center p-2">
       <h1>Annotations</h1>
       <div>
         <button
-          type="button"
           data-bs-toggle="modal"
           data-bs-target="#noteCreationModal"
           class="btn btn-success"
@@ -44,7 +47,7 @@
         </button>
       </div>
     </div>
-    <div class="list-group w-auto">
+    <div class="list-group w-auto" *ngIf="annotations.length > 0">
       <a
         *ngFor="let ann of annotations"
         class="list-group-item list-group-item-action d-flex gap-3 py-3"
@@ -57,16 +60,70 @@
               {{ ann.description }}
             </p>
           </div>
-          <button class="btn btn-danger" (click)="deleteAnnotation(ann.id)">
-            Delete
-          </button>
+          <div>
+            <button class="btn btn-danger" (click)="deleteAnnotation(ann.id)">
+              Delete
+            </button>
+          </div>
         </div>
       </a>
+    </div>
+    <div *ngIf="annotations.length == 0" class="text-white">
+      <h4>No annotations, create a new one</h4>
     </div>
   </div>
 </div>
 
-<!-- modal -->
+<div class="d-flex">
+  <!-- offers -->
+  <div class="col-6">
+    <div class="p-5 bg-success rounded-3">
+      <div class="container-fluid py-2">
+        <div class="d-flex justify-content-between">
+          <h1 class="display-5 fw-bold">Offers</h1>
+          <div>
+            <button
+              class="btn btn-primary"
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#offers"
+            >
+              +
+            </button>
+          </div>
+        </div>
+        <div *ngIf="offers.length > 0">
+          <a
+            *ngFor="let off of offers"
+            class="list-group-item list-group-item-action d-flex gap-3 py-3"
+            aria-current="true"
+          >
+            <div
+              class="d-flex gap-2 w-100 justify-content-between align-items-center"
+            >
+              <div>
+                <h3 class="mb-0">Name: {{ off.name }}</h3>
+                <p class="mb-0 opacity-75">
+                  {{ off.description }}
+                </p>
+                <h6>Price: {{ off.price }}</h6>
+              </div>
+              <div>
+                <button class="btn btn-warning mx-1">Modifica</button>
+                <button class="btn btn-danger" (click)="deleteOffer(off.id)">
+                  Delete
+                </button>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div *ngIf="offers.length == 0">No offers, create a new one</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modal modify user -->
 <div
   class="modal fade"
   id="exampleModal"
@@ -113,7 +170,7 @@
               type="text"
               class="form-control"
               id="company_name"
-              formControlName="company_name"
+              formControlName="business_name"
             />
           </div>
           <div class="mb-3">
@@ -152,7 +209,14 @@
             >
               Close
             </button>
-            <button type="button" class="btn btn-success">Create</button>
+            <button
+              type="button"
+              class="btn btn-success"
+              data-bs-dismiss="modal"
+              (click)="this.modifyClient()"
+            >
+              Modify
+            </button>
           </div>
         </form>
       </div>

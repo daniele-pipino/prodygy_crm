@@ -45,6 +45,7 @@ app.get("/client/:id/data", (req, res) => {
   const queries = [
     "SELECT * FROM prodigy_crm.clients where id =" + id,
     "SELECT * FROM prodigy_crm.annotations where clients_id =" + id,
+    "SELECT * FROM prodigy_crm.offers where clients_id =" + id,
   ];
   db.query(queries.join(";"), (err, result) => {
     if (err) {
@@ -53,6 +54,7 @@ app.get("/client/:id/data", (req, res) => {
       res.send({
         client: result[0][0],
         annotations: result[1],
+        offers: result[2],
       });
     }
   });
@@ -70,6 +72,22 @@ app.post("/new/client", (req, res) => {
       res.send({
         message: "Nuovo cliente aggiunto con successo",
       });
+    }
+  });
+});
+
+app.put("/modify/client/:id", (req, res) => {
+  const clientId = req.params.id;
+  const data = req.body;
+  console.log(data);
+
+  const qry = `UPDATE clients SET name = '${data.name}', surname = '${data.surname}', business_name = '${data.business_name}', p_iva = '${data.p_iva}', email = '${data.p_iva}', phone = '${data.phone}' WHERE (id = ${clientId});`;
+
+  db.query(qry, (err, res) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Utente modificato");
     }
   });
 });
@@ -107,6 +125,34 @@ app.get("/offers", (req, res) => {
   });
 });
 
+// create
+app.post("/create/client/:id/offer", (req, res) => {
+  let clientId = req.params.id;
+  let data = req.body;
+
+  let qry = `insert into offers (name,description,price,clients_id) values ('${data.title}','${data.description}','${data.price}','${clientId}');`;
+
+  db.query(qry, (err, res) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Offerta creata");
+    }
+  });
+});
+
+app.delete("/delete/offer/:id", (req, res) => {
+  const offerId = req.params.id;
+  const qry = `delete from offers where id = ${offerId};`;
+
+  db.query(qry, (err, res) => {
+    if (err) {
+      console.log(er);
+    } else {
+      console.log("Offerta eliminata");
+    }
+  });
+});
 // annotations
 app.post("/create/client/:id/annotation", (req, res) => {
   const clientID = req.params.id;

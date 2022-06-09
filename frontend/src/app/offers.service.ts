@@ -11,4 +11,19 @@ export class OffersService {
   getOffers() {
     return this._http.get(`${this.url}/offers`);
   }
+
+  createOffer(obj: object, id: number) {
+    const headers = { 'content-type': 'application/json' };
+    const body = JSON.stringify(obj);
+    console.log(body);
+    this._http
+      .post(`${this.url}/create/client/${id}/offer`, body, {
+        headers: headers,
+      })
+      .subscribe();
+  }
+
+  deleteOffer(id: number) {
+    this._http.delete(`${this.url}/delete/offer/${id}`).subscribe();
+  }
 }

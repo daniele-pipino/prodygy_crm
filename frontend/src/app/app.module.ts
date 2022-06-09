@@ -10,10 +10,11 @@ import { ClientlistComponent } from './clientlist/clientlist.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ClientcardComponent } from './clientcard/clientcard.component';
 import { CreateclientComponent } from './createclient/createclient.component';
-import { OfferslistComponent } from './offerslist/offerslist.component';
+
 import { OfferscardComponent } from './offerscard/offerscard.component';
 import { ClientScheduleComponent } from './client-schedule/client-schedule.component';
 import { CreateAnnotationsComponent } from './create-annotations/create-annotations.component';
+import { CreateOffersComponent } from './create-offers/create-offers.component';
 
 @NgModule({
   declarations: [
@@ -23,10 +24,10 @@ import { CreateAnnotationsComponent } from './create-annotations/create-annotati
     ClientlistComponent,
     ClientcardComponent,
     CreateclientComponent,
-    OfferslistComponent,
     OfferscardComponent,
     ClientScheduleComponent,
     CreateAnnotationsComponent,
+    CreateOffersComponent,
   ],
   imports: [
     BrowserModule,
