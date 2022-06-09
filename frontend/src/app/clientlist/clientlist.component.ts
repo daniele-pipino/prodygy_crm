@@ -11,9 +11,17 @@ export class ClientlistComponent implements OnInit {
   clients: Array<Client> = [];
   constructor(private clientsService: ClientsService) {}
 
-  ngOnInit(): void {
+  getClients() {
     this.clientsService.getClients().subscribe((res: any) => {
       this.clients = res.data;
     });
+  }
+
+  update(event: string) {
+    this.getClients();
+  }
+
+  ngOnInit(): void {
+    this.getClients();
   }
 }

@@ -25,12 +25,13 @@
 </div>
 
 <!-- creation modal  -->
-<app-createclient></app-createclient>
+<app-createclient (update)="this.update($event)"></app-createclient>
 
 <!-- clients -->
 <div class="container">
   <div class="row g-3">
     <app-clientcard
+      (update)="this.update($event)"
       *ngFor="let client of clients"
       [client]="client"
     ></app-clientcard>

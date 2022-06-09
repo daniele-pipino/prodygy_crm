@@ -50,7 +50,6 @@ app.get("/client/:id/data", (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      console.log(result);
       res.send({
         client: result[0][0],
         annotations: result[1],

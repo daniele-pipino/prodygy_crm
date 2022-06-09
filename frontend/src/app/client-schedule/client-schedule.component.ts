@@ -34,7 +34,7 @@ export class ClientScheduleComponent implements OnInit {
   }
 
   // get all the data
-  async getData() {
+  getData() {
     this.clientsService
       .getAllClientData(this.clientID)
       .subscribe((res: any) => {
@@ -45,6 +45,11 @@ export class ClientScheduleComponent implements OnInit {
 
   deleteAnnotation(id: number) {
     this.annotationsSevice.deleteAnnotation(id);
+    this.getData();
+  }
+
+  update(event: string) {
+    this.getData();
   }
 
   ngOnInit(): void {

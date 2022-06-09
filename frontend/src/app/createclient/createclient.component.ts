@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Output, EventEmitter } from '@angular/core';
 
 import {
   FormBuilder,
@@ -14,6 +15,7 @@ import { ClientsService } from '../clients.service';
   styleUrls: ['./createclient.component.css'],
 })
 export class CreateclientComponent implements OnInit {
+  @Output() update: EventEmitter<string> = new EventEmitter();
   constructor(private clientsService: ClientsService) {}
   ngOnInit(): void {}
 
@@ -29,6 +31,6 @@ export class CreateclientComponent implements OnInit {
   createNewClient() {
     let newClient = this.newClientForm.value;
     this.clientsService.createNewClient(newClient);
-    window.location.reload();
+    this.update.emit('update');
   }
 }

@@ -37,7 +37,12 @@
             ></textarea>
             <label for="description">Description</label>
           </div>
-          <button class="btn btn-primary my-2" (click)="createAnnotations()">
+          <button
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            class="btn btn-primary my-2"
+            (click)="createAnnotations()"
+          >
             Create
           </button>
         </form>

@@ -2,7 +2,10 @@
   <!-- client info -->
   <div class="col-4">
     <div class="p-5 mb-4 bg-light rounded-3" *ngIf="client">
-      <app-create-annotations [clientID]="client.id"></app-create-annotations>
+      <app-create-annotations
+        [clientID]="client.id"
+        (update)="update($event)"
+      ></app-create-annotations>
       <div class="container-fluid py-5">
         <h1>Info</h1>
         <h2 class="fw-bold">Client: {{ client.business_name }}</h2>
