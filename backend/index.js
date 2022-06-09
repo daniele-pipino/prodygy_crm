@@ -215,6 +215,22 @@ app.post("/create/client/:id/estimate", (req, res) => {
   });
 });
 
+app.put("/modify/estimate/:id", (req, res) => {
+  const estimateId = req.params.id;
+
+  const data = req.body;
+
+  const qry = `update estimates set name= '${data.name}', description='${data.description}', price = '${data.price}' where id = ${estimateId};`;
+
+  db.query(qry, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Preventivo modificato correttamente");
+    }
+  });
+});
+
 app.delete("/delete/estimate/:id", (req, res) => {
   const estimateId = req.params.id;
   const qry = `delete from estimates where id = ${estimateId}`;

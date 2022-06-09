@@ -1,0 +1,66 @@
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="modifyEstimates"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Crate estimate</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="modifyEstimateForm">
+          <div class="mb-3">
+            <label for="title" class="form-label">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              aria-describedby="title"
+              formControlName="name"
+            />
+          </div>
+          <div class="form-floating my-1">
+            <textarea
+              class="form-control"
+              placeholder="Leave a comment here"
+              id="description"
+              formControlName="description"
+            ></textarea>
+            <label for="description">Description</label>
+          </div>
+          <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input
+              type="text"
+              class="form-control"
+              id="price"
+              aria-describedby="price"
+              formControlName="price"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary">Close</button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+          (click)="modify()"
+        >
+          Modify estimate
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

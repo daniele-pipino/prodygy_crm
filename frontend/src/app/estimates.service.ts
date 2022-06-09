@@ -19,6 +19,17 @@ export class EstimatesService {
       .subscribe();
   }
 
+  modify(obj: object, id: number) {
+    const headers = { 'content-type': 'application/json' };
+    const body = JSON.stringify(obj);
+    console.log(body);
+    this._http
+      .put(`${this.url}/modify/estimate/${id}`, body, {
+        headers: headers,
+      })
+      .subscribe();
+  }
+
   delete(id: number) {
     this._http.delete(`${this.url}/delete/estimate/${id}`).subscribe();
   }

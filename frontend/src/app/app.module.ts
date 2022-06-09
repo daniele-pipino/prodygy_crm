@@ -17,7 +17,8 @@ import { CreateAnnotationsComponent } from './create-annotations/create-annotati
 import { CreateOffersComponent } from './create-offers/create-offers.component';
 import { ModifyOfferComponent } from './modify-offer/modify-offer.component';
 import { CreateEstimatesComponent } from './create-estimates/create-estimates.component';
-import { ModifyEestimatesComponent } from './modify-eestimates/modify-eestimates.component';
+
+import { ModifyEstimateComponent } from './modify-estimate/modify-estimate.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { ModifyEestimatesComponent } from './modify-eestimates/modify-eestimates
     CreateOffersComponent,
     ModifyOfferComponent,
     CreateEstimatesComponent,
-    ModifyEestimatesComponent,
+    ModifyEstimateComponent,
   ],
   imports: [
     BrowserModule,

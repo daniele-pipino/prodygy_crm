@@ -97,39 +97,40 @@
           </div>
         </div>
         <div *ngIf="offers.length > 0">
-          <a
-            *ngFor="let off of offers"
-            class="list-group-item list-group-item-action d-flex gap-3 py-3"
-            aria-current="true"
-          >
-            <div
-              class="d-flex gap-2 w-100 justify-content-between align-items-center"
+          <div *ngFor="let off of offers">
+            <a
+              class="list-group-item list-group-item-action d-flex gap-3 py-3"
+              aria-current="true"
             >
-              <div>
-                <h3 class="mb-0">Name: {{ off.name }}</h3>
-                <p class="mb-0 opacity-75">
-                  {{ off.description }}
-                </p>
-                <h6>Price: {{ off.price }}</h6>
+              <div
+                class="d-flex gap-2 w-100 justify-content-between align-items-center"
+              >
+                <div>
+                  <h3 class="mb-0">Name: {{ off.name }}</h3>
+                  <p class="mb-0 opacity-75">
+                    {{ off.description }}
+                  </p>
+                  <h6>Price: {{ off.price }}</h6>
+                </div>
+                <div>
+                  <button
+                    class="btn btn-warning mx-1"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modifyOffer"
+                  >
+                    Modifica
+                  </button>
+                  <button class="btn btn-danger" (click)="deleteOffer(off.id)">
+                    Delete
+                  </button>
+                </div>
               </div>
-              <div>
-                <button
-                  class="btn btn-warning mx-1"
-                  data-bs-toggle="modal"
-                  data-bs-target="#modifyOffer"
-                >
-                  Modifica
-                </button>
-                <button class="btn btn-danger" (click)="deleteOffer(off.id)">
-                  Delete
-                </button>
-              </div>
-            </div>
+            </a>
             <app-modify-offer
               [offer]="off"
               (update)="this.update($event)"
             ></app-modify-offer>
-          </a>
+          </div>
         </div>
         <div *ngIf="offers.length == 0">No offers, create a new one</div>
       </div>
@@ -155,38 +156,43 @@
           </div>
         </div>
         <div *ngIf="estimates.length > 0">
-          <a
-            *ngFor="let est of estimates"
-            class="list-group-item list-group-item-action d-flex gap-3 py-3"
-            aria-current="true"
-          >
-            <div
-              class="d-flex gap-2 w-100 justify-content-between align-items-center"
+          <div *ngFor="let est of estimates">
+            <a
+              class="list-group-item list-group-item-action d-flex gap-3 py-3"
+              aria-current="true"
             >
-              <div>
-                <h3 class="mb-0">Name: {{ est.name }}</h3>
-                <p class="mb-0 opacity-75">
-                  {{ est.description }}
-                </p>
-                <h6>Price: {{ est.price }}</h6>
+              <div
+                class="d-flex gap-2 w-100 justify-content-between align-items-center"
+              >
+                <div>
+                  <h3 class="mb-0">Name: {{ est.name }}</h3>
+                  <p class="mb-0 opacity-75">
+                    {{ est.description }}
+                  </p>
+                  <h6>Price: {{ est.price }}</h6>
+                </div>
+                <div>
+                  <button
+                    class="btn btn-warning mx-1"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modifyEstimates"
+                  >
+                    Modifica
+                  </button>
+                  <button
+                    class="btn btn-danger"
+                    (click)="deleteEstimates(est.id)"
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
-              <div>
-                <button
-                  class="btn btn-warning mx-1"
-                  data-bs-toggle="modal"
-                  data-bs-target="#modifyOffer"
-                >
-                  Modifica
-                </button>
-                <button
-                  class="btn btn-danger"
-                  (click)="deleteEstimates(est.id)"
-                >
-                  Delete
-                </button>
-              </div>
-            </div>
-          </a>
+            </a>
+            <app-modify-estimate
+              [estimate]="est"
+              (update)="update($event)"
+            ></app-modify-estimate>
+          </div>
         </div>
         <div *ngIf="estimates.length == 0">No estimates, create a new one</div>
       </div>
